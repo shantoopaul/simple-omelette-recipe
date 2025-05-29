@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap');
+
 /*
-  Josh's Custom CSS Reset
+  Modified Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
@@ -15,39 +17,18 @@
 	line-height: calc(1em + 0.5rem);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	html {
-		interpolate-size: allow-keywords;
-	}
-}
-
 body {
 	-webkit-font-smoothing: antialiased;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
+img {
 	display: block;
 	max-width: 100%;
 }
 
-input,
-button,
-textarea,
-select {
-	font: inherit;
-}
-
 p,
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
 	overflow-wrap: break-word;
 }
 
@@ -56,13 +37,8 @@ p {
 	hyphens: auto;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	text-wrap: balance;
+li {
+	list-style: none;
 }
 
 /* General Styles */
@@ -77,4 +53,221 @@ h6 {
 	--stone-600: hsl(30, 10%, 34%);
 	--stone-900: hsl(24, 5%, 18%);
 	--brown-800: hsl(14, 45%, 36%);
+
+	/* Spacing variables */
+	--s-8: 0.5rem;
+	--s-12: 0.75rem;
+	--s-16: 1rem;
+	--s-24: 1.5rem;
+	--s-28: 1.75rem;
+	--s-32: 2rem;
+	--s-40: 2.5rem;
+	--s-124: 7.75rem;
+
+	/* Font sizes */
+	--text-20: 1.25rem;
+	--text-28: 1.75rem;
+	--text-32: 2rem;
+	--text-40: 2.5rem;
+	--text-32-40: clamp(var(--text-32), 6vw, var(--text-40));
+
+	/* Font weights */
+	--font-normal: 400;
+	--font-semibold: 600;
+	--font-bold: 700;
+
+	/* Border raidus value */
+	--br-12: 12px;
+
+	/* Fluid border raidus value */
+
+	--fl-br-12: clamp(0px, (100vw - 64rem) * 999, 12px);
+	--fl-br-24: clamp(0px, (100vw - 64rem) * 999, 24px);
+
+	/* Fluid spacing variables */
+	--fl-s-32-40: clamp(var(--s-32), 6vw, var(--s-40));
+	--fl-s-40: clamp(0px, (100vw - 64rem) * 999, var(--s-40));
+	--fl-s-124: clamp(0px, (100vw - 64rem) * 999, var(--s-124));
+}
+
+.visually-hidden:not(:focus):not(:active) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	font-family: 'Outfit', sans-serif;
+	color: var(--stone-600);
+	background-color: var(--stone-100);
+}
+
+main {
+	max-width: 46rem;
+	border-radius: var(--fl-br-24);
+	margin-block: var(--fl-s-124);
+	background-color: var(--white);
+}
+
+figure {
+	padding-block-start: var(--fl-s-40);
+	padding-inline: var(--fl-s-40);
+}
+
+figure img {
+	border-radius: var(--fl-br-12);
+}
+
+article {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--s-32);
+	padding: var(--text-32-40);
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--s-24);
+}
+
+h1,
+h2 {
+	font-family: 'Young Serif', serif;
+	font-weight: var(--font-normal);
+}
+
+h1 {
+	font-size: var(--fl-s-32-40);
+	color: var(--stone-900);
+}
+
+h2 {
+	font-size: var(--text-28);
+	color: var(--brown-800);
+}
+
+.prep-time {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--s-16);
+	padding: var(--s-24);
+	border-radius: var(--br-12);
+	background-color: var(--rose-50);
+}
+
+.prep-time h2 {
+	font-family: 'Outfit', sans-serif;
+	font-weight: var(--font-semibold);
+	font-size: var(--text-20);
+	color: var(--rose-800);
+}
+
+.prep-time ul,
+.ingredients ul,
+.instructions ol {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--s-8);
+	padding-inline-start: var(--s-12);
+}
+
+.prep-time li,
+.ingredients li {
+	padding-inline-start: var(--s-28);
+}
+
+.prep-time li::marker,
+.ingredients li::marker {
+	content: '•';
+}
+
+.prep-time li::marker {
+	color: var(--rose-800);
+	font-weight: var(--font-bold);
+}
+
+.ingredients li::marker {
+	color: var(--brown-800);
+	font-weight: var(--font-bold);
+}
+
+.instructions ol {
+	counter-reset: steps;
+	padding-inline-start: var(--s-24);
+}
+
+.instructions li {
+	counter-increment: steps;
+	padding-inline-start: var(--s-16);
+}
+
+.instructions li::marker {
+	content: counter(steps) '.';
+	font: inherit;
+	font-weight: var(--font-bold);
+	color: var(--brown-800);
+}
+
+.ingredients,
+.instructions {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--s-16);
+	padding-block-end: var(--s-24);
+	border-bottom: 1px solid var(--stone-150);
+}
+
+.nutrition {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--s-16);
+	text-align: left;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+caption {
+	text-align: left;
+	padding-block-end: var(--s-16);
+}
+
+th {
+	font-weight: var(--font-normal);
+}
+
+td {
+	font-weight: var(--font-bold);
+	color: var(--brown-800);
+}
+
+th {
+	padding: var(--s-12) var(--s-32);
+}
+
+td {
+	padding: var(--s-12);
+	width: 50%;
+}
+
+tr:not(:last-child) {
+	border-bottom: 1px solid var(--stone-150);
+}
+
+tbody tr:first-child th,
+tbody tr:first-child td {
+	padding-top: 0;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+	padding-bottom: 0;
 }
