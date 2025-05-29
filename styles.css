@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap');
 
-/*
-  Modified Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
-*/
-
+/* Modified CSS reset
+	 https://www.joshwcomeau.com/css/custom-css-reset/ */
 *,
 *::before,
 *::after {
@@ -15,10 +12,6 @@
 	margin: 0;
 	padding: 0;
 	line-height: calc(1em + 0.5rem);
-}
-
-body {
-	-webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -41,10 +34,9 @@ li {
 	list-style: none;
 }
 
-/* General Styles */
-
+/* Root Variables */
 :root {
-	/* Color variables */
+	/* Colors */
 	--white: hsl(0, 0%, 100%);
 	--rose-50: hsl(330, 100%, 98%);
 	--rose-800: hsl(332, 51%, 32%);
@@ -54,7 +46,7 @@ li {
 	--stone-900: hsl(24, 5%, 18%);
 	--brown-800: hsl(14, 45%, 36%);
 
-	/* Spacing variables */
+	/* Spacing */
 	--s-8: 0.5rem;
 	--s-12: 0.75rem;
 	--s-16: 1rem;
@@ -64,32 +56,32 @@ li {
 	--s-40: 2.5rem;
 	--s-124: 7.75rem;
 
-	/* Font sizes */
+	/* Font Sizes */
 	--text-20: 1.25rem;
 	--text-28: 1.75rem;
 	--text-32: 2rem;
 	--text-40: 2.5rem;
 	--text-32-40: clamp(var(--text-32), 6vw, var(--text-40));
 
-	/* Font weights */
+	/* Font Weights */
 	--font-normal: 400;
 	--font-semibold: 600;
 	--font-bold: 700;
 
-	/* Border raidus value */
+	/* Border Radius */
 	--br-12: 12px;
 
-	/* Fluid border raidus value */
-
+	/* Fluid Border Radius */
 	--fl-br-12: clamp(0px, (100vw - 64rem) * 999, 12px);
 	--fl-br-24: clamp(0px, (100vw - 64rem) * 999, 24px);
 
-	/* Fluid spacing variables */
+	/* Fluid Spacing */
 	--fl-s-32-40: clamp(var(--s-32), 6vw, var(--s-40));
 	--fl-s-40: clamp(0px, (100vw - 64rem) * 999, var(--s-40));
 	--fl-s-124: clamp(0px, (100vw - 64rem) * 999, var(--s-124));
 }
 
+/* SR Only Style */
 .visually-hidden:not(:focus):not(:active) {
 	position: absolute;
 	width: 1px;
@@ -100,21 +92,24 @@ li {
 	white-space: nowrap;
 }
 
+/* General Styles */
 body {
 	display: flex;
 	justify-content: center;
 	font-family: 'Outfit', sans-serif;
 	color: var(--stone-600);
 	background-color: var(--stone-100);
+	-webkit-font-smoothing: antialiased;
 }
 
 main {
 	max-width: 46rem;
-	border-radius: var(--fl-br-24);
 	margin-block: var(--fl-s-124);
+	border-radius: var(--fl-br-24);
 	background-color: var(--white);
 }
 
+/* Main Image Styles */
 figure {
 	padding-block-start: var(--fl-s-40);
 	padding-inline: var(--fl-s-40);
@@ -124,6 +119,7 @@ figure img {
 	border-radius: var(--fl-br-12);
 }
 
+/* Text Content Styles */
 article {
 	display: flex;
 	flex-direction: column;
@@ -137,6 +133,7 @@ header {
 	row-gap: var(--s-24);
 }
 
+/* Headings */
 h1,
 h2 {
 	font-family: 'Young Serif', serif;
@@ -153,6 +150,7 @@ h2 {
 	color: var(--brown-800);
 }
 
+/* Prep Time */
 .prep-time {
 	display: flex;
 	flex-direction: column;
@@ -169,6 +167,8 @@ h2 {
 	color: var(--rose-800);
 }
 
+/* This section is quite messy ;-; */
+/* Lists (Shared Styles) */
 .prep-time ul,
 .ingredients ul,
 .instructions ol {
@@ -178,26 +178,26 @@ h2 {
 	padding-inline-start: var(--s-12);
 }
 
+/* List Items */
 .prep-time li,
 .ingredients li {
 	padding-inline-start: var(--s-28);
 }
 
-.prep-time li::marker,
-.ingredients li::marker {
-	content: '•';
-}
-
+/* Disc Styles */
 .prep-time li::marker {
+	content: '•';
 	color: var(--rose-800);
 	font-weight: var(--font-bold);
 }
 
 .ingredients li::marker {
+	content: '•';
 	color: var(--brown-800);
 	font-weight: var(--font-bold);
 }
 
+/* Instructions */
 .instructions ol {
 	counter-reset: steps;
 	padding-inline-start: var(--s-24);
@@ -215,6 +215,7 @@ h2 {
 	color: var(--brown-800);
 }
 
+/* Shared Styles */
 .ingredients,
 .instructions {
 	display: flex;
@@ -224,6 +225,7 @@ h2 {
 	border-bottom: 1px solid var(--stone-150);
 }
 
+/* Nutrition Table */
 .nutrition {
 	display: flex;
 	flex-direction: column;
@@ -233,6 +235,7 @@ h2 {
 
 table {
 	border-collapse: collapse;
+	width: 100%;
 }
 
 caption {
@@ -240,28 +243,29 @@ caption {
 	padding-block-end: var(--s-16);
 }
 
+th,
+td {
+	padding: var(--s-12);
+	text-align: left;
+}
+
 th {
 	font-weight: var(--font-normal);
+	padding-inline: var(--s-32);
 }
 
 td {
 	font-weight: var(--font-bold);
 	color: var(--brown-800);
-}
-
-th {
-	padding: var(--s-12) var(--s-32);
-}
-
-td {
-	padding: var(--s-12);
 	width: 50%;
 }
 
+/* Table Border Styles */
 tr:not(:last-child) {
 	border-bottom: 1px solid var(--stone-150);
 }
 
+/* Remove top/bottom padding for first and last rows */
 tbody tr:first-child th,
 tbody tr:first-child td {
 	padding-top: 0;
