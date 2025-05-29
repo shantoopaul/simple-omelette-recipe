@@ -72,13 +72,13 @@ li {
 	--br-12: 12px;
 
 	/* Fluid Border Radius */
-	--fl-br-12: clamp(0px, (100vw - 64rem) * 999, 12px);
-	--fl-br-24: clamp(0px, (100vw - 64rem) * 999, 24px);
+	--fl-br-12: clamp(0px, (100vw - 1023px) * 999, 12px);
+	--fl-br-24: clamp(0px, (100vw - 1023px) * 999, 24px);
 
 	/* Fluid Spacing */
 	--fl-s-32-40: clamp(var(--s-32), 6vw, var(--s-40));
-	--fl-s-40: clamp(0px, (100vw - 64rem) * 999, var(--s-40));
-	--fl-s-124: clamp(0px, (100vw - 64rem) * 999, var(--s-124));
+	--fl-s-40: clamp(0px, (100vw - 1023px) * 999, var(--s-40));
+	--fl-s-124: clamp(0px, (100vw - 1023px) * 999, var(--s-124));
 }
 
 /* SR Only Style */
@@ -103,7 +103,6 @@ body {
 }
 
 main {
-	max-width: 46rem;
 	margin-block: var(--fl-s-124);
 	border-radius: var(--fl-br-24);
 	background-color: var(--white);
@@ -274,4 +273,10 @@ tbody tr:first-child td {
 tbody tr:last-child th,
 tbody tr:last-child td {
 	padding-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+	main {
+		max-width: 46rem;
+	}
 }
