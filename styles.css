@@ -275,7 +275,7 @@ tbody tr:last-child td {
 	padding-bottom: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64em) {
 	main {
 		max-width: 46rem;
 	}
